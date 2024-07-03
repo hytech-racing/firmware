@@ -1,8 +1,8 @@
 ![HyTech Logo](https://hytechracing.gatech.edu/images/hytech_logo.png)
 
-# 2024 Code
+# Hytech Code
 
-Repository for all of the code for the 2023-2024 car.
+Repository for all of the code for HT09
 
 ## Getting Started with this Git Repository
 1. Create a GitHub account if you don't already have one.
@@ -24,7 +24,8 @@ Follow HyTech's [Electrical Designs Rules Review Process](https://gtvault.sharep
 
 ## Organization
 * `CellTesting/`  Code related to battery cell testing
-* `Libraries/`    Library files that are needed to compile our code (you can create a symlink from your Arduino libraries folder to this)
+* `Libraries/`    Library files that are needed to compile our code (you can create a symlink from your Arduino libraries folder to this).
+  * Note: As more boards move from Arduino IDE to PlatformIO, this directory will become deprecated.
 * `Playground/`   Location for testing and proof of concept code
 * `Resources/`    Files that might help you as you work on HyTech software projects
 * `Telemetry/`    Telemetry visualization and logging software
