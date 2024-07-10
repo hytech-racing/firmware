@@ -13,10 +13,11 @@
 #define BTN_LED_DIMMER 21
 
 //Dial pin definition (RANDOM FOR NOW)
+//physical wiring messed up
 #define DIAL_SIZE 6
-#define DIAL_MODE_ONE 9
-#define DIAL_MODE_TWO 8
-#define DIAL_ACCELERATION_LAUNCH_CONTROL 7
+#define DIAL_MODE_ONE 9 //mode 0
+#define DIAL_MODE_TWO 8 //mode 1
+#define DIAL_ACCELERATION_LAUNCH_CONTROL 7// mode 2
 #define DIAL_SKIDPAD 6
 #define DIAL_AUTOCROSS 5
 #define DIAL_ENDURANCE 4
