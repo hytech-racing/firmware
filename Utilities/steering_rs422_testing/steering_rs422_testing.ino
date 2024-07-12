@@ -43,6 +43,7 @@ void setup() {
 //  steering.save_parameters();
   
 //  steering.self_calibration();
+  
 }
 
 void loop() {
@@ -52,6 +53,5 @@ void loop() {
     Serial.println(steering.check_calibration_status(),BIN);
     steering.read_steering();
     Serial.println();
-    
   }
 }

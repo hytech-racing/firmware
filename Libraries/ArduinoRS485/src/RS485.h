@@ -26,7 +26,7 @@
 #ifdef PIN_SERIAL1_TX
 #define RS485_DEFAULT_TX_PIN PIN_SERIAL1_TX
 #else
-#define RS485_DEFAULT_TX_PIN 20 
+#define RS485_DEFAULT_TX_PIN 1 
 #endif
 #endif
 
@@ -41,11 +41,10 @@
 #define RS485_DEFAULT_RE_PIN A5
 #else
 #ifndef RS485_DEFAULT_DE_PIN
-#define RS485_DEFAULT_DE_PIN A6
-#define RS485_DEFAULT_RE_PIN A5
+#define RS485_DEFAULT_DE_PIN 2
+#define RS485_DEFAULT_RE_PIN -1
 #endif
 #endif
-
 
 #define RS485_DEFAULT_PRE_DELAY 50
 #define RS485_DEFAULT_POST_DELAY 50
@@ -83,10 +82,10 @@ class RS485Class : public Stream {
     void setDelays(int predelay, int postdelay);
 
   private:
-    HardwareSerial* _serial = &SERIAL_PORT_HARDWARE4;
-    int _txPin = 20;
-    int _dePin;
-    int _rePin;
+    HardwareSerial* _serial = &SERIAL_PORT_HARDWARE;
+    int _txPin = 1;
+    int _dePin = 2;
+    int _rePin = -1;
     int _predelay = 0;
     int _postdelay = 0;
 
