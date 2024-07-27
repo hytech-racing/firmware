@@ -8,9 +8,9 @@
 #include "SysClock.h"
 #include "VN_300.h"
 
-const int VN_READ_INTERVAL = 10;        // milliseconds
-const int VN_READ_ASCII_INTERVAL = 8;
-const int VN_READ_BINARY_INTERVAL = 8;
+const int VN_READ_INTERVAL = 4;        // milliseconds
+const int VN_READ_ASCII_INTERVAL = 3;
+const int VN_READ_BINARY_INTERVAL = 3;
 
 class VectorNavInterface
 {

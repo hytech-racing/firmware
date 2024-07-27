@@ -117,6 +117,13 @@ void VectorNavInterface::processGNSSSignalStrength(unsigned long currMillis)
 {
     if ((currMillis - lastVNReadAsciiTime_ > VN_READ_ASCII_INTERVAL) && asciiReadingStart_)
     {
+        // while (Serial2.available())
+        // {
+        //     Serial.print(Serial2.read(), HEX);
+        // }
+        // Serial.println();
+        
+
         vn_.readGNSSSignalStrength();
 
         update_CAN_vn_gnss_comp_sig_health(vn_.get());
@@ -133,6 +140,12 @@ void VectorNavInterface::processPollingBinaryOutput(unsigned long currMillis)
 {
     if ((currMillis - lastVNReadBinaryTime_ > VN_READ_BINARY_INTERVAL) && binaryReadingStart_)
     {
+        // while (Serial2.available())
+        // {
+        //     Serial.print(Serial2.read(), HEX);
+        // }
+        // Serial.println();
+
         uint8_t binaryGroupRead =  vn_.readPollingBinaryOutput();
 
         switch (binaryGroupRead)
