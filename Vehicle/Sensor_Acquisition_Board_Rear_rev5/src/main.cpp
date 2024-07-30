@@ -67,9 +67,9 @@ ThermistorReadChannel_s<TOTAL_THERMISTOR_COUNT> therm_channels = {{THERM_3, THER
 ThermistorInterface<TOTAL_THERMISTOR_COUNT> therm_interface(therm_channels, THERM_ALPHA);
 // VectorNav
 // Async
-// vnParams_s vn_params = {&Serial2, VN_RS232_SPEED, true, INIT_HEADING, true, 8};
+vnParams_s vn_params = {&Serial2, VN_SERIAL_BAUDRATE5, true, INIT_HEADING, true, 8};
 // Polling
-vnParams_s vn_params = {&Serial2, VN_SERIAL_BAUDRATE9, true, INIT_HEADING, false, 0};
+// vnParams_s vn_params = {&Serial2, VN_SERIAL_BAUDRATE9, true, INIT_HEADING, false, 0};
 VectorNavInterface vn_interface(&CAN2_txBuffer, vn_params);
 
 /**
