@@ -57,11 +57,15 @@ public:
     template <typename U>
     void enqueue_new_CAN_msg(U *structure, uint32_t (*pack_function)(U *, uint8_t *, uint8_t *, uint8_t *));
 
-    void tick(
+    /// @brief forward outbound messages at 50Hz
+    void tick50(
         const AnalogConversionPacket_s<4> &adc1,
         const AnalogConversionPacket_s<4> &adc2,
-        const AnalogConversionPacket_s<8> &adc3,
-        const bool tcu_shutdown_status,
+        const bool tcu_shutdown_status
+    );
+
+    /// @brief forward outbound messages at 10Hz
+    void tick10(
         const TemperatureReport_s<7> &thermTemp
     );
 

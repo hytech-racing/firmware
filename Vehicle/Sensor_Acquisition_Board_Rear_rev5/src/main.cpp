@@ -67,9 +67,9 @@ ThermistorReadChannel_s<TOTAL_THERMISTOR_COUNT> therm_channels = {{THERM_3, THER
 ThermistorInterface<TOTAL_THERMISTOR_COUNT> therm_interface(therm_channels, THERM_ALPHA);
 // VectorNav
 // Async
-vnParams_s vn_params = {&Serial2, VN_SERIAL_BAUDRATE5, true, INIT_HEADING, true, 8};
+// vnParams_s vn_params = {&Serial2, VN_SERIAL_BAUDRATE5, true, INIT_HEADING, true, 8};
 // Polling
-// vnParams_s vn_params = {&Serial2, VN_SERIAL_BAUDRATE9, true, INIT_HEADING, false, 0};
+vnParams_s vn_params = {&Serial2, VN_SERIAL_BAUDRATE9, true, INIT_HEADING, false, 0};
 VectorNavInterface vn_interface(&CAN2_txBuffer, vn_params);
 
 /**
@@ -245,11 +245,16 @@ void tick_all_interfaces(const SysTick_s &curr_tick)
     {  
         // 50Hz
         // Telemetry
-        telem_interface.tick(ADC1.get(),
-                             ADC2.get(),
-                             ADC3.get(),
-                             btn_pi_shutdown.isPressed(),
-                             therm_interface.get());
+        telem_interface.tick50(ADC1.get(),
+                               ADC2.get(),
+                               btn_pi_shutdown.isPressed());
+    }
+
+    if (t.trigger10)
+    {
+        // 10Hz
+        // Telemetry
+        telem_interface.tick10(therm_interface.get());
     }
 
     // Timing managed internally

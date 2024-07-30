@@ -66,21 +66,25 @@ void TelemetryInterface::enqueue_new_CAN_msg(U *structure, uint32_t (*pack_funct
 }
 
 /* Tick SysClock */
-void TelemetryInterface::tick(const AnalogConversionPacket_s<4> &adc1,
-                              const AnalogConversionPacket_s<4> &adc2,
-                              const AnalogConversionPacket_s<8> &adc3,
-                              const bool tcu_shutdown_status,
-                              const TemperatureReport_s<7> &thermTemp)
+/// @brief forward outbound messages at 50Hz
+/// crucial values e.g. load cells
+void TelemetryInterface::tick50(const AnalogConversionPacket_s<4> &adc1,
+                                const AnalogConversionPacket_s<4> &adc2,
+                                const bool tcu_shutdown_status)
 {
-    // 10Hz
-    update_thermistors_CAN_msg(thermTemp);
-    // 20Hz
+    // 50Hz
     update_cornerboard_CAN_msg(adc1.conversions[channels_.loadcell_rl_channel],
                                adc2.conversions[channels_.loadcell_rr_channel],
                                adc1.conversions[channels_.pots_rl_channel],
                                adc2.conversions[channels_.pots_rr_channel]);
     // 50Hz
     update_tcu_status_CAN_msg(tcu_shutdown_status);
+}
 
-    // IMU TBD  // 50Hz
+/// @brief forward outbound messages at 10Hz
+/// values changing gradually e.g. thermister temperatures
+void TelemetryInterface::tick10(const TemperatureReport_s<7> &thermTemp)
+{
+    // 10Hz
+    update_thermistors_CAN_msg(thermTemp);
 }
